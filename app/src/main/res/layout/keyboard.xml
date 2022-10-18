@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/all_clear"
+        style="@style/Widget.Button.Circle"
+        android:text="@string/all_clear" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/priority"
+        style="@style/Widget.Button.Circle"
+        android:text="@string/priority" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/percent"
+        style="@style/Widget.Button.Circle"
+        android:text="@string/percent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/divide"
+        style="@style/Widget.Button.Circle"
+        android:text="@string/divide" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/seven"
+        style="@style/Widget.Button.Circle"
+        android:text="@string/seven_number" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/eight"
+        style="@style/Widget.Button.Circle"
+        android:text="@string/eight_number" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/nine"
+        style="@style/Widget.Button.Circle"
+        android:text="@string/nine_number" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/multiply"
+        style="@style/Widget.Button.Circle"
+        android:text="@string/multiply" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/four"
+        style="@style/Widget.Button.Circle"
+        android:text="@string/four_number" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/five"
+        style="@style/Widget.Button.Circle"
+        android:text="@string/five_number" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/six"
+        style="@style/Widget.Button.Circle"
+        android:text="@string/six_number" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/minus"
+        style="@style/Widget.Button.Circle"
+        android:text="@string/minus" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/one"
+        style="@style/Widget.Button.Circle"
+        android:text="@string/one_number" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/two"
+        style="@style/Widget.Button.Circle"
+        android:text="@string/two_number" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/three"
+        style="@style/Widget.Button.Circle"
+        android:text="@string/three_number" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/plus"
+        style="@style/Widget.Button.Circle"
+        android:text="@string/plus" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/zero"
+        style="@style/Widget.Button.Circle"
+        android:text="@string/zero_number" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/dot"
+        style="@style/Widget.Button.Circle"
+        android:text="@string/dot" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/erase"
+        style="@style/Widget.Button.Circle"
+        app:icon="@drawable/ic_keyboard_backspace" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/equally"
+        style="@style/Widget.Button.Circle"
+        android:text="@string/equally" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        app:constraint_referenced_ids="all_clear, priority, percent, divide,
+        seven, eight, nine, multiply,
+        four, five, six, minus,
+        one, two, three, plus,
+        zero, dot, erase, equally"
+        app:flow_horizontalGap="6dp"
+        app:flow_horizontalStyle="packed"
+        app:flow_verticalGap="6dp"
+        app:flow_wrapMode="aligned"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</merge>
