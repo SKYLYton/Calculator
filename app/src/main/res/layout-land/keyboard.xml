@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/all_clear"
+        style="@style/Widget.Button.Circle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="@string/all_clear"
+        android:textSize="28sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/priority"
+        style="@style/Widget.Button.Circle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="@string/priority"
+        android:textSize="28sp"
+        tools:layout_editor_absoluteX="417dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/percent"
+        style="@style/Widget.Button.Circle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="@string/percent"
+        android:textSize="28sp"
+        tools:layout_editor_absoluteX="513dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/divide"
+        style="@style/Widget.Button.Circle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="@string/divide"
+        android:textSize="28sp"
+        tools:layout_editor_absoluteX="609dp" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/seven"
+        style="@style/Widget.Button.Circle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="@string/seven_number"
+        android:textSize="28sp"
+        tools:layout_editor_absoluteX="33dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/eight"
+        style="@style/Widget.Button.Circle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="@string/eight_number"
+        android:textSize="28sp"
+        tools:layout_editor_absoluteX="225dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/nine"
+        style="@style/Widget.Button.Circle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="@string/nine_number"
+        android:textSize="28sp"
+        tools:layout_editor_absoluteX="129dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/multiply"
+        style="@style/Widget.Button.Circle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="@string/multiply"
+        android:textSize="28sp"
+        tools:layout_editor_absoluteX="321dp"
+        tools:layout_editor_absoluteY="96dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/four"
+        style="@style/Widget.Button.Circle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="@string/four_number"
+        android:textSize="28sp"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="96dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/five"
+        style="@style/Widget.Button.Circle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="@string/five_number"
+        android:textSize="28sp"
+        tools:layout_editor_absoluteX="129dp"
+        tools:layout_editor_absoluteY="96dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/six"
+        style="@style/Widget.Button.Circle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="@string/six_number"
+        android:textSize="28sp"
+        tools:layout_editor_absoluteX="225dp"
+        tools:layout_editor_absoluteY="96dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/minus"
+        style="@style/Widget.Button.Circle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="@string/minus"
+        android:textSize="28sp"
+        tools:layout_editor_absoluteX="417dp"
+        tools:layout_editor_absoluteY="96dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/one"
+        style="@style/Widget.Button.Circle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="@string/one_number"
+        android:textSize="28sp"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="192dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/two"
+        style="@style/Widget.Button.Circle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="@string/two_number"
+        android:textSize="28sp"
+        tools:layout_editor_absoluteX="129dp"
+        tools:layout_editor_absoluteY="192dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/three"
+        style="@style/Widget.Button.Circle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="@string/three_number"
+        android:textSize="28sp"
+        tools:layout_editor_absoluteX="225dp"
+        tools:layout_editor_absoluteY="192dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/plus"
+        style="@style/Widget.Button.Circle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="@string/plus"
+        android:textSize="28sp"
+        tools:layout_editor_absoluteX="513dp"
+        tools:layout_editor_absoluteY="96dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/zero"
+        style="@style/Widget.Button.Circle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="@string/zero_number"
+        android:textSize="28sp"
+        tools:layout_editor_absoluteX="321dp"
+        tools:layout_editor_absoluteY="192dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/dot"
+        style="@style/Widget.Button.Circle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="@string/dot"
+        android:textSize="28sp"
+        tools:layout_editor_absoluteX="417dp"
+        tools:layout_editor_absoluteY="192dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/erase"
+        style="@style/Widget.Button.Circle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:textSize="28sp"
+        app:icon="@drawable/ic_keyboard_backspace"
+        tools:layout_editor_absoluteX="609dp"
+        tools:layout_editor_absoluteY="96dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/equally"
+        style="@style/Widget.Button.Circle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="@string/equally"
+        android:textSize="28sp"
+        tools:layout_editor_absoluteX="513dp"
+        tools:layout_editor_absoluteY="192dp" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:layout_width="600dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        app:constraint_referenced_ids="
+        seven, eight, nine,all_clear, priority, percent, divide,
+        four, five, six, multiply, minus, plus, erase,
+        one, two, three,
+        zero, dot, equally"
+        app:flow_horizontalGap="6dp"
+        app:flow_horizontalStyle="packed"
+        app:flow_verticalGap="6dp"
+        app:flow_wrapMode="aligned"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</merge>
