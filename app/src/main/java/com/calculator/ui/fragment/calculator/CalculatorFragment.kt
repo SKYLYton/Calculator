@@ -22,7 +22,7 @@ class CalculatorFragment :
             keyboard.operationListener = {
                 /* no-op */
             }
-            keyboard.numberListenerListener = {
+            keyboard.numberListener = {
                 result.text = it.toString()
             }
             keyboard.resultListener = {

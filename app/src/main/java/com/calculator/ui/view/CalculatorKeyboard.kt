@@ -17,7 +17,7 @@ class CalculatorKeyboard(
 ) : ConstraintLayout(context, attrs), View.OnClickListener {
 
     var operationListener: (() -> Unit)? = null
-    var numberListenerListener: ((Long) -> Unit)? = null
+    var numberListener: ((Long) -> Unit)? = null
     var resultListener: ((Long) -> Unit)? = null
         set(value) {
             operationModel.resultListener = value
@@ -107,7 +107,7 @@ class CalculatorKeyboard(
         } else {
             value
         }
-        numberListenerListener?.invoke(currentValue)
+        numberListener?.invoke(currentValue)
     }
 }
 

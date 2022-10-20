@@ -8,196 +8,104 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/all_clear"
-        style="@style/Widget.Button.Circle"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:text="@string/all_clear"
-        android:textSize="28sp" />
+        style="@style/Widget.Button.Circle.Landscape"
+        android:text="@string/all_clear" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/priority"
-        style="@style/Widget.Button.Circle"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:text="@string/priority"
-        android:textSize="28sp"
-        tools:layout_editor_absoluteX="417dp" />
+        style="@style/Widget.Button.Circle.Landscape"
+        android:text="@string/priority" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/percent"
-        style="@style/Widget.Button.Circle"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:text="@string/percent"
-        android:textSize="28sp"
-        tools:layout_editor_absoluteX="513dp" />
+        style="@style/Widget.Button.Circle.Landscape"
+        android:text="@string/percent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/divide"
-        style="@style/Widget.Button.Circle"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:text="@string/divide"
-        android:textSize="28sp"
-        tools:layout_editor_absoluteX="609dp" />
+        style="@style/Widget.Button.Circle.Landscape"
+        android:text="@string/divide" />
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/seven"
-        style="@style/Widget.Button.Circle"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:text="@string/seven_number"
-        android:textSize="28sp"
-        tools:layout_editor_absoluteX="33dp" />
+        style="@style/Widget.Button.Circle.Landscape"
+        android:text="@string/seven_number" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/eight"
-        style="@style/Widget.Button.Circle"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:text="@string/eight_number"
-        android:textSize="28sp"
-        tools:layout_editor_absoluteX="225dp" />
+        style="@style/Widget.Button.Circle.Landscape"
+        android:text="@string/eight_number" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/nine"
-        style="@style/Widget.Button.Circle"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:text="@string/nine_number"
-        android:textSize="28sp"
-        tools:layout_editor_absoluteX="129dp" />
+        style="@style/Widget.Button.Circle.Landscape"
+        android:text="@string/nine_number" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/multiply"
-        style="@style/Widget.Button.Circle"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:text="@string/multiply"
-        android:textSize="28sp"
-        tools:layout_editor_absoluteX="321dp"
-        tools:layout_editor_absoluteY="96dp" />
+        style="@style/Widget.Button.Circle.Landscape"
+        android:text="@string/multiply" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/four"
-        style="@style/Widget.Button.Circle"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:text="@string/four_number"
-        android:textSize="28sp"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="96dp" />
+        style="@style/Widget.Button.Circle.Landscape"
+        android:text="@string/four_number" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/five"
-        style="@style/Widget.Button.Circle"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:text="@string/five_number"
-        android:textSize="28sp"
-        tools:layout_editor_absoluteX="129dp"
-        tools:layout_editor_absoluteY="96dp" />
+        style="@style/Widget.Button.Circle.Landscape"
+        android:text="@string/five_number" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/six"
-        style="@style/Widget.Button.Circle"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:text="@string/six_number"
-        android:textSize="28sp"
-        tools:layout_editor_absoluteX="225dp"
-        tools:layout_editor_absoluteY="96dp" />
+        style="@style/Widget.Button.Circle.Landscape"
+        android:text="@string/six_number" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/minus"
-        style="@style/Widget.Button.Circle"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:text="@string/minus"
-        android:textSize="28sp"
-        tools:layout_editor_absoluteX="417dp"
-        tools:layout_editor_absoluteY="96dp" />
+        style="@style/Widget.Button.Circle.Landscape"
+        android:text="@string/minus" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/one"
-        style="@style/Widget.Button.Circle"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:text="@string/one_number"
-        android:textSize="28sp"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="192dp" />
+        style="@style/Widget.Button.Circle.Landscape"
+        android:text="@string/one_number" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/two"
-        style="@style/Widget.Button.Circle"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:text="@string/two_number"
-        android:textSize="28sp"
-        tools:layout_editor_absoluteX="129dp"
-        tools:layout_editor_absoluteY="192dp" />
+        style="@style/Widget.Button.Circle.Landscape"
+        android:text="@string/two_number" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/three"
-        style="@style/Widget.Button.Circle"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:text="@string/three_number"
-        android:textSize="28sp"
-        tools:layout_editor_absoluteX="225dp"
-        tools:layout_editor_absoluteY="192dp" />
+        style="@style/Widget.Button.Circle.Landscape"
+        android:text="@string/three_number" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/plus"
-        style="@style/Widget.Button.Circle"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:text="@string/plus"
-        android:textSize="28sp"
-        tools:layout_editor_absoluteX="513dp"
-        tools:layout_editor_absoluteY="96dp" />
+        style="@style/Widget.Button.Circle.Landscape"
+        android:text="@string/plus" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/zero"
-        style="@style/Widget.Button.Circle"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:text="@string/zero_number"
-        android:textSize="28sp"
-        tools:layout_editor_absoluteX="321dp"
-        tools:layout_editor_absoluteY="192dp" />
+        style="@style/Widget.Button.Circle.Landscape"
+        android:text="@string/zero_number" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/dot"
-        style="@style/Widget.Button.Circle"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:text="@string/dot"
-        android:textSize="28sp"
-        tools:layout_editor_absoluteX="417dp"
-        tools:layout_editor_absoluteY="192dp" />
+        style="@style/Widget.Button.Circle.Landscape"
+        android:text="@string/dot" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/erase"
-        style="@style/Widget.Button.Circle"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:textSize="28sp"
-        app:icon="@drawable/ic_keyboard_backspace"
-        tools:layout_editor_absoluteX="609dp"
-        tools:layout_editor_absoluteY="96dp" />
+        style="@style/Widget.Button.Circle.Landscape"
+        app:icon="@drawable/ic_keyboard_backspace" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/equally"
-        style="@style/Widget.Button.Circle"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:text="@string/equally"
-        android:textSize="28sp"
-        tools:layout_editor_absoluteX="513dp"
-        tools:layout_editor_absoluteY="192dp" />
+        style="@style/Widget.Button.Circle.Landscape"
+        android:text="@string/equally" />
 
     <androidx.constraintlayout.helper.widget.Flow
         android:layout_width="600dp"

@@ -47,7 +47,11 @@ class OperationModel {
         }
         result?.let {
             when (operation) {
-                Operation.DIVIDE -> result = it / value
+                Operation.DIVIDE -> {
+                    if (value != ZERO) {
+                        result = it / value
+                    }
+                }
                 Operation.MULTIPLY -> result = it * value
                 Operation.MINUS -> result = it - value
                 Operation.PLUS -> result = it + value
@@ -65,3 +69,5 @@ class OperationModel {
 private enum class Operation {
     DIVIDE, MULTIPLY, MINUS, PLUS
 }
+
+private const val ZERO: Long = 0
