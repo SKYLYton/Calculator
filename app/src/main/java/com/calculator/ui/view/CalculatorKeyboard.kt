@@ -6,34 +6,44 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.calculator.databinding.KeyboardBinding
+import com.calculator.extension.*
+import com.calculator.utils.Operation
 import com.calculator.utils.OperationModel
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 /**
  * @author Fedotov Yakov
  */
 class CalculatorKeyboard(
-    context: Context,
-    attrs: AttributeSet?
+    context: Context, attrs: AttributeSet?
 ) : ConstraintLayout(context, attrs), View.OnClickListener {
 
-    var operationListener: (() -> Unit)? = null
-    var numberListener: ((Long) -> Unit)? = null
-    var resultListener: ((Long) -> Unit)? = null
+    var operationListener: ((Operation) -> Unit)? = null
         set(value) {
-            operationModel.resultListener = value
+            operationModel.operationListener = value
             field = value
         }
+    var numberListener: ((String) -> Unit)? = null
+    var resultListener: ((String) -> Unit)? = null
 
-    private val binding =
-        KeyboardBinding.inflate(LayoutInflater.from(context), this)
+    private val binding = KeyboardBinding.inflate(LayoutInflater.from(context), this)
 
     private val operationModel = OperationModel()
-    private var currentValue: Long = 0
+    private var currentValue = BigDecimal.ZERO
+    private var hasDot = false
+    private var numberOfCharacters = 0
+        set(value) {
+            if (value < 0) {
+                field = 0
+                return
+            }
+            field = value
+        }
 
     init {
         binding.apply {
             allClear.setOnClickListener(this@CalculatorKeyboard)
-            priority.setOnClickListener(this@CalculatorKeyboard)
             percent.setOnClickListener(this@CalculatorKeyboard)
             divide.setOnClickListener(this@CalculatorKeyboard)
             seven.setOnClickListener(this@CalculatorKeyboard)
@@ -50,8 +60,13 @@ class CalculatorKeyboard(
             plus.setOnClickListener(this@CalculatorKeyboard)
             zero.setOnClickListener(this@CalculatorKeyboard)
             dot.setOnClickListener(this@CalculatorKeyboard)
-            erase.setOnClickListener(this@CalculatorKeyboard)
+            plusMinus.setOnClickListener(this@CalculatorKeyboard)
             equally.setOnClickListener(this@CalculatorKeyboard)
+        }
+
+        operationModel.resultListener = {
+            numberOfCharacters = 0
+            resultListener?.invoke(it.toEngineeringString())
         }
     }
 
@@ -59,35 +74,47 @@ class CalculatorKeyboard(
         binding.apply {
             when (view) {
                 allClear -> {
-                    currentValue = ZERO
                     operationModel.allClear()
-                }
-                priority -> {
+                    newValue()
                 }
                 percent -> {
                 }
                 divide -> {
                     operationModel.divide(currentValue)
-                    currentValue = ZERO
+                    newValue()
                 }
                 multiply -> {
                     operationModel.multiply(currentValue)
-                    currentValue = ZERO
+                    newValue()
                 }
                 minus -> {
                     operationModel.minus(currentValue)
-                    currentValue = ZERO
+                    newValue()
                 }
                 plus -> {
                     operationModel.plus(currentValue)
-                    currentValue = ZERO
+                    newValue()
                 }
-                equally -> operationModel.equally(currentValue)
-                erase -> {
+                equally -> {
+                    hasDot = false
+                    numberOfCharacters = 0
+                    operationModel.equally(currentValue)
+                }
+                plusMinus -> {
+                    currentValue = currentValue.negate()
+                    numberListener?.invoke(currentValueToString())
                 }
                 dot -> {
+                    if (!hasDot) {
+                        if (operationModel.isOperationCompleted()) {
+                            operationModel.allClear()
+                            newValue()
+                        }
+                        hasDot = true
+                        numberListener?.invoke(currentValue.toPlainString() + DOT_CHAR)
+                    }
                 }
-                zero -> setCurrentValue(ZERO)
+                zero -> setCurrentValue(BigDecimal.ZERO)
                 one -> setCurrentValue(ONE)
                 two -> setCurrentValue(TWO)
                 three -> setCurrentValue(THREE)
@@ -101,24 +128,93 @@ class CalculatorKeyboard(
         }
     }
 
-    private fun setCurrentValue(value: Long) {
-        currentValue = if (currentValue > ZERO) {
-            currentValue * TEN + value
+    /**
+     * Стирает последний символ, если операция не была совершена
+     */
+    fun eraseSymbol() {
+        when {
+            operationModel.isOperationCompleted() -> return
+            !hasDot && currentValue.isLessThan(NINE) && currentValue.isMoreThan(NINE.negate()) -> {
+                operationModel.allClear()
+                newValue()
+            }
+            !hasDot -> currentValue =
+                currentValue.divide(BigDecimal.TEN).setScale(0, RoundingMode.DOWN)
+            else -> {
+                currentValue = currentValue.setScale(currentValue.scale() - 1, RoundingMode.DOWN)
+                numberOfCharacters--
+                if (currentValue.isIntegerValue()) {
+                    hasDot = false
+                }
+            }
+        }
+        numberListener?.invoke(currentValue.toPlainString())
+    }
+
+    /**
+     * Определяет параметры для ввода нового числа
+     */
+    private fun newValue() {
+        hasDot = false
+        numberOfCharacters = 0
+        currentValue = BigDecimal.ZERO
+    }
+
+    /**
+     * Устанавливает текущее число.
+     */
+    private fun setCurrentValue(value: BigDecimal) {
+        if (operationModel.isOperationCompleted()) {
+            operationModel.allClear()
+            newValue()
+        }
+
+        currentValue = processValue(value)
+
+        val result = value.isZero() then currentValueToString() or currentValue.toPlainString()
+
+        numberListener?.invoke(result)
+    }
+
+    /**
+     * Возвращает введеное число в формате String.
+     */
+    private fun currentValueToString() = currentValue.toPlainString() +
+            if (hasDot) {
+                if (currentValue.isIntegerValue()) {
+                    DOT_CHAR + ZERO_CHAR.repeat(numberOfCharacters)
+                } else {
+                    ZERO_CHAR.repeat(numberOfCharacters - currentValue.getNumberOfDecimalPlaces())
+                }
+            } else {
+                ""
+            }
+
+    /**
+     * Возвращает введеное число на клавиатуре.
+     */
+    private fun processValue(value: BigDecimal) =
+        if (!currentValue.isZero() || hasDot) {
+            if (hasDot) {
+                numberOfCharacters++
+                val degree = BigDecimal.TEN.pow(numberOfCharacters)
+                currentValue.plus(value.divide(degree))
+            } else {
+                currentValue.multiply(BigDecimal.TEN).plus(value)
+            }
         } else {
             value
         }
-        numberListener?.invoke(currentValue)
-    }
 }
 
-private const val ZERO: Long = 0
-private const val ONE: Long = 1
-private const val TWO: Long = 2
-private const val THREE: Long = 3
-private const val FOUR: Long = 4
-private const val FIVE: Long = 5
-private const val SIX: Long = 6
-private const val SEVEN: Long = 7
-private const val EIGHT: Long = 8
-private const val NINE: Long = 9
-private const val TEN: Long = 10
+private val ONE = BigDecimal(1)
+private val TWO = BigDecimal(2)
+private val THREE = BigDecimal(3)
+private val FOUR = BigDecimal(4)
+private val FIVE = BigDecimal(5)
+private val SIX = BigDecimal(6)
+private val SEVEN = BigDecimal(7)
+private val EIGHT = BigDecimal(8)
+private val NINE = BigDecimal(9)
+private const val DOT_CHAR: Char = '.'
+private const val ZERO_CHAR: String = "0"

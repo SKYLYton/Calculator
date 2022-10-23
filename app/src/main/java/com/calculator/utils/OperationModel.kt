@@ -1,73 +1,90 @@
 package com.calculator.utils
 
+import com.calculator.extension.isZero
+import java.math.BigDecimal
+import java.math.MathContext
+
 /**
  * @author Fedotov Yakov
  */
 class OperationModel {
 
-    var resultListener: ((Long) -> Unit)? = null
+    var resultListener: ((BigDecimal) -> Unit)? = null
+    var operationListener: ((Operation) -> Unit)? = null
 
-    private var result: Long? = null
-    private var operation: Operation? = null
+    private var result: BigDecimal? = null
+    private var currentOperation: Operation? = null
+        set(value) {
+            if (value == null) {
+                operationListener?.invoke(Operation.NONE)
+                field?.let {
+                    lastOperation = it
+                }
+            } else {
+                operationListener?.invoke(value)
+                lastOperation = null
+            }
+            field = value
+        }
+    private var lastOperation: Operation? = null
 
     fun allClear() {
         result = null
-        operation = null
-        resultListener?.invoke(0)
+        currentOperation = null
+        lastOperation = null
+        resultListener?.invoke(BigDecimal.ZERO)
     }
 
-    fun divide(value: Long) {
-        processOperation(value)
-        operation = Operation.DIVIDE
+    fun divide(value: BigDecimal) {
+        processOperation(value, currentOperation)
+        currentOperation = Operation.DIVIDE
     }
 
-    fun multiply(value: Long) {
-        processOperation(value)
-        operation = Operation.MULTIPLY
+    fun multiply(value: BigDecimal) {
+        processOperation(value, currentOperation)
+        currentOperation = Operation.MULTIPLY
     }
 
-    fun minus(value: Long) {
-        processOperation(value)
-        operation = Operation.MINUS
+    fun minus(value: BigDecimal) {
+        processOperation(value, currentOperation)
+        currentOperation = Operation.MINUS
     }
 
-    fun plus(value: Long) {
-        processOperation(value)
-        operation = Operation.PLUS
+    fun plus(value: BigDecimal) {
+        processOperation(value, currentOperation)
+        currentOperation = Operation.PLUS
     }
 
-    fun equally(value: Long) {
-        processOperation(value)
+    fun equally(value: BigDecimal) {
+        processOperation(value, lastOperation ?: currentOperation)
     }
 
-    private fun processOperation(value: Long) {
+    fun isOperationCompleted(): Boolean = currentOperation == null && lastOperation != null
+
+    private fun processOperation(value: BigDecimal, operation: Operation?) {
         if (result == null) {
             result = value
             return
         }
         result?.let {
             when (operation) {
-                Operation.DIVIDE -> {
-                    if (value != ZERO) {
-                        result = it / value
-                    }
+                // TODO: выводить ошибку, если делим на 0
+                Operation.DIVIDE -> if (!value.isZero()) {
+                    result = it.divide(value, MathContext.DECIMAL128)
                 }
-                Operation.MULTIPLY -> result = it * value
-                Operation.MINUS -> result = it - value
-                Operation.PLUS -> result = it + value
-                null -> {
+                Operation.MULTIPLY -> result = it.multiply(value)
+                Operation.MINUS -> result = it.minus(value)
+                Operation.PLUS -> result = it.plus(value)
+                else -> {
                     /* no-op */
                 }
             }
-            if (operation != null) {
-                resultListener?.invoke(result ?: 0)
-            }
         }
+        resultListener?.invoke(result ?: BigDecimal.ZERO)
+        currentOperation = null
     }
 }
 
-private enum class Operation {
-    DIVIDE, MULTIPLY, MINUS, PLUS
+enum class Operation(val symbol: String) {
+    DIVIDE("÷"), MULTIPLY("×"), MINUS("−"), PLUS("+"), NONE("")
 }
-
-private const val ZERO: Long = 0
