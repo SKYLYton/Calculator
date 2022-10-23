@@ -141,14 +141,20 @@ class CalculatorKeyboard(
             !hasDot -> currentValue =
                 currentValue.divide(BigDecimal.TEN).setScale(0, RoundingMode.DOWN)
             else -> {
-                currentValue = currentValue.setScale(currentValue.scale() - 1, RoundingMode.DOWN)
+                if (currentValue.getNumberOfDecimalPlaces() == numberOfCharacters) {
+                    currentValue =
+                        currentValue.setScale(
+                            currentValue.getNumberOfDecimalPlaces() - 1,
+                            RoundingMode.DOWN
+                        )
+                }
                 numberOfCharacters--
-                if (currentValue.isIntegerValue()) {
+                if (currentValue.isIntegerValue() && numberOfCharacters <= 0) {
                     hasDot = false
                 }
             }
         }
-        numberListener?.invoke(currentValue.toPlainString())
+        numberListener?.invoke(currentValueToString())
     }
 
     /**
@@ -179,16 +185,10 @@ class CalculatorKeyboard(
     /**
      * Возвращает введеное число в формате String.
      */
-    private fun currentValueToString() = currentValue.toPlainString() +
-            if (hasDot) {
-                if (currentValue.isIntegerValue()) {
-                    DOT_CHAR + ZERO_CHAR.repeat(numberOfCharacters)
-                } else {
-                    ZERO_CHAR.repeat(numberOfCharacters - currentValue.getNumberOfDecimalPlaces())
-                }
-            } else {
-                ""
-            }
+    private fun currentValueToString(): String {
+        currentValue = currentValue.setScale(numberOfCharacters, RoundingMode.HALF_UP);
+        return currentValue.toPlainString()
+    }
 
     /**
      * Возвращает введеное число на клавиатуре.
@@ -196,8 +196,7 @@ class CalculatorKeyboard(
     private fun processValue(value: BigDecimal) =
         if (!currentValue.isZero() || hasDot) {
             if (hasDot) {
-                numberOfCharacters++
-                val degree = BigDecimal.TEN.pow(numberOfCharacters)
+                val degree = BigDecimal.TEN.pow(++numberOfCharacters)
                 currentValue.plus(value.divide(degree))
             } else {
                 currentValue.multiply(BigDecimal.TEN).plus(value)
