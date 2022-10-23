@@ -66,7 +66,7 @@ class CalculatorKeyboard(
 
         operationModel.resultListener = {
             numberOfCharacters = 0
-            resultListener?.invoke(it.toEngineeringString())
+            resultListener?.invoke(it.toPlainString())
         }
     }
 
@@ -185,10 +185,8 @@ class CalculatorKeyboard(
     /**
      * Возвращает введеное число в формате String.
      */
-    private fun currentValueToString(): String {
-        currentValue = currentValue.setScale(numberOfCharacters, RoundingMode.HALF_UP);
-        return currentValue.toPlainString()
-    }
+    private fun currentValueToString(): String =
+        currentValue.setScale(numberOfCharacters, RoundingMode.HALF_UP).toPlainString()
 
     /**
      * Возвращает введеное число на клавиатуре.
