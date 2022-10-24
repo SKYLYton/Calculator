@@ -33,11 +33,6 @@ abstract class BaseFragment<Binding : ViewBinding>(private val inflate: Inflate<
     private var isFirstResume: Boolean = true
 
     /**
-     * Поле, отвечающее за видимость нижнего навигационного меню
-     */
-    open var isBottomNavViewVisible = true
-
-    /**
      * Главный контейнер, к элементам которого будет применяться анимация
      */
     protected var container: ViewGroup? = null

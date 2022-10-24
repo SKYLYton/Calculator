@@ -33,14 +33,12 @@ class CalculatorFragment :
             }
 
             //Swipe для удаления последнего введенного символа
+            var xDown = 0f
             root.setOnTouchListener { _, event ->
                 when (event.action) {
-                    MotionEvent.ACTION_DOWN -> x1 = event.x
-                    MotionEvent.ACTION_UP -> {
-                        x2 = event.x
-                        if (abs(x2 - x1) > MIN_DISTANCE) {
-                            keyboard.eraseSymbol()
-                        }
+                    MotionEvent.ACTION_DOWN -> xDown = event.x
+                    MotionEvent.ACTION_UP -> if (abs(event.x - xDown) > MIN_DISTANCE) {
+                        keyboard.eraseSymbol()
                     }
                 }
                 true
@@ -49,6 +47,4 @@ class CalculatorFragment :
     }
 }
 
-private var x1 = 0f
-private var x2: Float = 0f
 private const val MIN_DISTANCE = 150
