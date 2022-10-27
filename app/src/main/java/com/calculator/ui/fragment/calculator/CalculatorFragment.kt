@@ -5,8 +5,10 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.calculator.databinding.FragmentCalculatorBinding
+import com.calculator.ui.activity.EXTRA_VALUE
 import com.calculator.ui.fragment.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
+import java.math.BigDecimal
 import kotlin.math.abs
 
 
@@ -22,6 +24,13 @@ class CalculatorFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         runBinding {
+
+            val value = arguments?.getDouble(EXTRA_VALUE, 0.0) ?: 0.0
+
+            settings.setOnClickListener {
+                navigateSafety(CalculatorFragmentDirections.actionCalculatorFragmentToSettingsFragment())
+            }
+
             keyboard.operationListener = {
                 operation.text = it.symbol
             }
@@ -31,6 +40,8 @@ class CalculatorFragment :
             keyboard.resultListener = {
                 result.text = it
             }
+
+            keyboard.setCurrentValue(BigDecimal.valueOf(value).stripTrailingZeros())
 
             //Swipe для удаления последнего введенного символа
             var xDown = 0f

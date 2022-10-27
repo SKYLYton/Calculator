@@ -1,12 +1,10 @@
 package com.calculator.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.findNavController
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.calculator.R
 import com.calculator.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,9 +27,16 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         val inflater = navController.navInflater
         val graph = inflater.inflate(R.navigation.main_navigation)
-        graph.setStartDestination(R.id.calculatorFragment)
         navController.graph = graph
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        val value =
+            intent?.takeIf { it.hasExtra(EXTRA_VALUE) }?.extras
+
+        navController.navigate(R.id.calculatorFragment, value)
+
     }
 }
+
+const val EXTRA_VALUE = "com.example.EXTRA_VALUE"
