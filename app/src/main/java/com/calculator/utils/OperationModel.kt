@@ -55,6 +55,17 @@ class OperationModel {
         currentOperation = Operation.PLUS
     }
 
+    fun percent(value: BigDecimal) {
+        result = if (result == null) {
+            value.divide(HUNDRED)
+        } else {
+            result?.divide(HUNDRED)
+        }
+        resultListener?.invoke(result ?: BigDecimal.ZERO)
+        currentOperation = null
+        lastOperation = Operation.NONE
+    }
+
     fun equally(value: BigDecimal) {
         processOperation(value, lastOperation ?: currentOperation)
     }
@@ -84,6 +95,8 @@ class OperationModel {
         currentOperation = null
     }
 }
+
+private val HUNDRED = BigDecimal(100)
 
 enum class Operation(val symbol: String) {
     DIVIDE("÷"), MULTIPLY("×"), MINUS("−"), PLUS("+"), NONE("")

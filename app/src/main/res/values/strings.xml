@@ -24,6 +24,8 @@
     <string name="dot">·</string>
     <string name="plus_minus">+/-</string>
 
-
+    <!--SettingsFragment-->
+    <string name="fragment_settings_light_theme">Светлая тема</string>
+    <string name="fragment_settings_dark_theme">Темная тема</string>
 
 </resources>

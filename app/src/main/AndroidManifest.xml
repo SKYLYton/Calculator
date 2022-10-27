@@ -21,6 +21,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter android:label="com.calculator.ui.activity.MainActivity">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <!-- Принимаем URI с началом "calculator://value" -->
+                <data
+                    android:host="value"
+                    android:scheme="calculator" />
+            </intent-filter>
 
             <meta-data
                 android:name="android.app.lib_name"

@@ -78,6 +78,7 @@ class CalculatorKeyboard(
                     newValue()
                 }
                 percent -> {
+                    operationModel.percent(currentValue)
                 }
                 divide -> {
                     operationModel.divide(currentValue)
@@ -169,7 +170,7 @@ class CalculatorKeyboard(
     /**
      * Устанавливает текущее число.
      */
-    private fun setCurrentValue(value: BigDecimal) {
+    fun setCurrentValue(value: BigDecimal) {
         if (operationModel.isOperationCompleted()) {
             operationModel.allClear()
             newValue()
